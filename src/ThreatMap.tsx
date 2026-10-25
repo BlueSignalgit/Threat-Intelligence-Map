@@ -12,7 +12,12 @@ import {
 import type { GeoJsonObject } from "geojson";
 import type { Indicator } from "./data";
 
-import { WORLD_BOUNDS, TILE_URL, minimumWorldZoom } from "./map-policy";
+import {
+  WORLD_BOUNDS,
+  TILE_URL,
+  TILE_MAX_NATIVE_ZOOM,
+  minimumWorldZoom,
+} from "./map-policy";
 
 export interface MapLabel {
   name: string;
@@ -57,10 +62,12 @@ function MapLayers({
     <>
       <TileLayer
         url={TILE_URL}
+        className="blue-marble-tiles"
+        maxNativeZoom={TILE_MAX_NATIVE_ZOOM}
         noWrap
         bounds={WORLD_BOUNDS}
         maxZoom={18}
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a> · English labels: Natural Earth'
+        attribution='Imagery: <a href="https://earthdata.nasa.gov/gibs">NASA GIBS / Blue Marble</a> · English labels and boundaries: <a href="https://www.naturalearthdata.com/">Natural Earth</a>'
       />
       {world && (
         <GeoJSON

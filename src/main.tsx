@@ -434,7 +434,7 @@ function App() {
                 <p>
                   Optional server-side IP geolocation uses ipwho.is. Coordinates
                   are approximate and may identify hosting providers. Map tiles
-                  use CARTO’s label-free dark style, with English country and
+                  use NASA GIBS Blue Marble imagery, with English country and
                   city names from Natural Earth. Viewing the map sends tile
                   requests to that service.
                 </p>

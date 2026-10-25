@@ -649,3 +649,8 @@ footer > span:first-child {
 .brand-sub {
   letter-spacing: 2.3px;
 }
+
+/* Darken only the new label-free NASA imagery to match the dashboard. */
+.blue-marble-tiles {
+  filter: brightness(0.45) saturate(0.45);
+}

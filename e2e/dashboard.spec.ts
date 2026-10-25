@@ -153,9 +153,11 @@ test("English map, zoom controls, bounded panning and threat popups work", async
     .locator(".leaflet-tile")
     .evaluateAll((els) => els.map((el) => (el as HTMLImageElement).src));
   for (const source of sources) {
-    const match = source.match(/dark_nolabels\/(\d+)\/(\d+)\/(\d+)\.png/);
+    const match = source.match(
+      /GoogleMapsCompatible_Level8\/(\d+)\/(\d+)\/(\d+)\.jpeg/,
+    );
     expect(match).not.toBeNull();
-    expect(Number(match![2])).toBeLessThan(2 ** Number(match![1]));
+    expect(Number(match![3])).toBeLessThan(2 ** Number(match![1]));
   }
   for (let i = 0; i < 8; i++) {
     if ((await zoomOut.getAttribute("aria-disabled")) === "true") break;
@@ -173,4 +175,55 @@ test("English map, zoom controls, bounded panning and threat popups work", async
   await expect(zoomOut).toHaveAttribute("aria-disabled", "true");
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(map).toBeVisible();
+});
+
+test("public NASA basemap returns real imagery without an API key", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    process.env.VERIFY_BASEMAP !== "1",
+    "Live provider check runs in CI or with VERIFY_BASEMAP=1",
+  );
+  const oldProviderRequests: string[] = [];
+  page.on("request", (request) => {
+    if (request.url().includes("cartocdn.com"))
+      oldProviderRequests.push(request.url());
+  });
+  await page.goto("/");
+  const tiles = page.locator(".leaflet-tile");
+  await expect
+    .poll(
+      () =>
+        tiles.evaluateAll(
+          (elements) =>
+            elements.filter((element) => {
+              const image = element as HTMLImageElement;
+              return image.complete && image.naturalWidth === 256;
+            }).length,
+        ),
+      { timeout: 30000 },
+    )
+    .toBeGreaterThan(0);
+  const source = await tiles.first().getAttribute("src");
+  expect(source).toContain("https://gibs.earthdata.nasa.gov/");
+  const response = await page.request.get(source!);
+  expect(response.ok()).toBe(true);
+  expect(response.headers()["content-type"]).toContain("image/jpeg");
+  const image = await response.body();
+  expect(image.subarray(0, 3).toString("hex")).toBe("ffd8ff");
+  await testInfo.attach("unmodified-provider-tile", {
+    body: image,
+    contentType: "image/jpeg",
+  });
+  await expect(page.locator(".leaflet-control-attribution")).toContainText(
+    "NASA GIBS / Blue Marble",
+  );
+  await expect(
+    page.locator(".country-label").filter({ hasText: /^Russia$/ }),
+  ).toHaveCount(1);
+  await testInfo.attach("rendered-map", {
+    body: await page.locator(".map").screenshot(),
+    contentType: "image/png",
+  });
+  expect(oldProviderRequests).toEqual([]);
 });
