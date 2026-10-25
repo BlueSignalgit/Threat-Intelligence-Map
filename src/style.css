@@ -271,7 +271,7 @@ h2 svg {
   background: #102132;
 }
 .leaflet-tile-pane {
-  filter: brightness(0.48) saturate(0.35) hue-rotate(155deg);
+  filter: none;
 }
 .leaflet-control-attribution {
   font-size: 9px !important;
@@ -618,4 +618,34 @@ footer > span:first-child {
   .map-footer {
     padding: 12px 14px;
   }
+}
+
+/* Labels come from bundled English names, never local-language raster text. */
+.leaflet-tooltip.english-map-label {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #a8bacb;
+  text-shadow:
+    0 1px 3px #080e19,
+    1px 0 3px #080e19;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.leaflet-tooltip.english-map-label::before {
+  display: none;
+}
+.country-label {
+  font-size: 10px;
+  letter-spacing: 0.6px;
+}
+.city-label {
+  font-size: 10px;
+  color: #c8d5e2 !important;
+}
+.brand {
+  letter-spacing: 0.6px;
+}
+.brand-sub {
+  letter-spacing: 2.3px;
 }

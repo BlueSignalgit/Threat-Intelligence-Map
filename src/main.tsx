@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import {
-  MapContainer,
-  TileLayer,
-  CircleMarker,
-  Popup,
-  GeoJSON,
-} from "react-leaflet";
+import { ThreatMap } from "./ThreatMap";
 import {
   Shield,
   Radar,
@@ -20,12 +14,10 @@ import {
   Activity,
 } from "lucide-react";
 import { matches, sourceFresh, validateData, type Intelligence } from "./data";
-import type { GeoJsonObject } from "geojson";
 import "leaflet/dist/leaflet.css";
 import "./style.css";
 
 function App() {
-  const [world, setWorld] = useState<GeoJsonObject>();
   const [data, setData] = useState<Intelligence>();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -53,13 +45,6 @@ function App() {
   }
   useEffect(() => {
     void load();
-    void fetch(`${import.meta.env.BASE_URL}data/world.json`)
-      .then((r) => {
-        if (!r.ok) throw new Error("Boundaries unavailable");
-        return r.json();
-      })
-      .then(setWorld)
-      .catch(() => {});
   }, []);
   const indicators = (data?.indicators ?? []).filter((r) =>
     matches(query, [r.ip, r.malware, r.country, r.status, r.port]),
@@ -83,7 +68,7 @@ function App() {
         <a className="brand" href="#" onClick={() => setTab("overview")}>
           <Shield size={33} />
           <span>
-            OFFENSIVE<span className="brand-sub">DEFENDERS</span>
+            BlueSignal's<span className="brand-sub">Threat Map</span>
           </span>
         </a>
         <div className="workspace-label">INTELLIGENCE WORKSPACE</div>
@@ -114,7 +99,7 @@ function App() {
       <main>
         <header>
           <div className="breadcrumb">
-            Offensive Defenders <span>/</span> Threat Intelligence Center
+            BlueSignal's Threat Map <span>/</span> Threat Intelligence
           </div>
           <div className="header-state">
             <span className={healthy === 2 ? "dot" : "dot amber"} />
@@ -198,57 +183,7 @@ function App() {
                 <span className="pill">{mapped.length} mapped endpoints</span>
               </div>
               <div className="map">
-                <MapContainer
-                  center={[22, 10]}
-                  zoom={2}
-                  minZoom={2}
-                  scrollWheelZoom={false}
-                  style={{ height: "100%", width: "100%" }}
-                >
-                  {world && (
-                    <GeoJSON
-                      data={world}
-                      interactive={false}
-                      style={{
-                        color: "#394e63",
-                        weight: 1,
-                        fillColor: "#172d40",
-                        fillOpacity: 0.65,
-                      }}
-                    />
-                  )}
-                  <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-                  {mapped.map((r) => (
-                    <CircleMarker
-                      className="threat-marker"
-                      key={`${r.ip}:${r.port}`}
-                      center={[r.location!.lat, r.location!.lon]}
-                      radius={6}
-                      pathOptions={{
-                        className: "threat-marker",
-                        color: "#f97365",
-                        fillColor: "#fb6559",
-                        fillOpacity: 0.7,
-                        weight: 1,
-                      }}
-                    >
-                      <Popup>
-                        <strong>
-                          {r.ip}:{r.port}
-                        </strong>
-                        <br />
-                        {r.malware} · {r.status}
-                        <br />
-                        {r.location!.country}
-                        <br />
-                        Source: Feodo Tracker
-                      </Popup>
-                    </CircleMarker>
-                  ))}
-                </MapContainer>
+                <ThreatMap indicators={mapped} />
                 {!mapped.length && (
                   <div className="map-empty">
                     {loading
@@ -499,7 +434,8 @@ function App() {
                 <p>
                   Optional server-side IP geolocation uses ipwho.is. Coordinates
                   are approximate and may identify hosting providers. Map tiles
-                  are provided by OpenStreetMap; viewing the map sends tile
+                  use CARTO’s label-free dark style, with English country and
+                  city names from Natural Earth. Viewing the map sends tile
                   requests to that service.
                 </p>
               </article>
@@ -507,8 +443,8 @@ function App() {
           )}
           <footer>
             <span>
-              <Shield size={13} /> OFFENSIVE DEFENDERS{" "}
-              <span className="muted">/ Threat Intelligence Center</span>
+              <Shield size={13} /> BlueSignal's Threat Map{" "}
+              <span className="muted">/ Threat Intelligence</span>
             </span>
             <span>
               Snapshot:{" "}

@@ -18,7 +18,7 @@ def now():
     return datetime.now(timezone.utc).isoformat()
 
 def fetch(url):
-    request = Request(url, headers={'User-Agent': 'OffensiveDefenders-TIC/1.0 (public threat research)'})
+    request = Request(url, headers={'User-Agent': 'BlueSignal-ThreatMap/1.0 (public threat research)'})
     with urlopen(request, timeout=30) as response:
         return json.load(response)
 
@@ -64,7 +64,7 @@ def geolocate(rows, cache, limit=100):
         if ip not in cache and lookups < limit:
             lookups += 1
             try:
-                data = fetch('https://ipwho.is/' + ip)
+                data = fetch('https://ipwho.is/' + ip + '?lang=en')
                 if data.get('success') and isinstance(data.get('latitude'), (int, float)) and isinstance(data.get('longitude'), (int, float)):
                     cache[ip] = {'lat': data['latitude'], 'lon': data['longitude'], 'country': data.get('country', ''), 'resolvedAt': now()}
             except Exception as error:

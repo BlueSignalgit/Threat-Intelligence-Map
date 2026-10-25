@@ -1,4 +1,4 @@
-# Offensive Defenders Threat Intelligence Center
+# BlueSignal's Threat Map
 
 A responsive, dark-themed React + TypeScript dashboard with Leaflet, Tailwind CSS, real Feodo Tracker C2 indicators, and the CISA Known Exploited Vulnerabilities catalog. No synthetic intelligence is published. Test fixtures use reserved addresses and remain outside public assets.
 
@@ -12,7 +12,7 @@ python3 scripts/collect.py --geolocate
 npm run dev
 ```
 
-The committed `public/data/intelligence.json` is an actual collected snapshot. Development and production builds work offline with that snapshot; detailed map tiles require Internet access, while bundled Natural Earth country boundaries remain available offline. Refresh snapshot reloads published JSON, not upstream feeds. Search supports CVE, vendor, product, descriptions, IP, port, country, and malware. CVE rows expand to show required action and remediation due dates. Only indicators with resolved coordinates appear on the map. IP geolocation is approximate and is not evidence of attacker origin.
+The committed `public/data/intelligence.json` is an actual collected snapshot. Development and production builds work offline with that snapshot; detailed CARTO label-free dark tiles require Internet access, while bundled Natural Earth country boundaries and English country/city labels remain available offline. Refresh snapshot reloads published JSON, not upstream feeds. Search supports CVE, vendor, product, descriptions, IP, port, country, and malware. CVE rows expand to show required action and remediation due dates. Only indicators with resolved coordinates appear on the map. IP geolocation is approximate and is not evidence of attacker origin.
 
 ```sh
 npm test
@@ -50,3 +50,9 @@ See [source verification and terms](docs/SOURCES.md). URLhaus and ThreatFox rema
 - `.github/workflows/`: validation, scheduled collection, and Pages deployment.
 
 Data remains subject to its upstream terms; this repository does not relicense provider data. No software license has been selected by the repository owner.
+
+## English, bounded map
+
+The map uses CARTO Dark Matter **without raster labels** and bundled Natural Earth `NAME_EN` country/city labels. This avoids mixed-language text baked into tiles. Major cities appear from zoom 4; more city names appear from zoom 6. Geography labels are context only, not threat indicators. English zoom controls and threat popups remain interactive.
+
+Leaflet uses `noWrap: true` on tiles, `worldCopyJump: false`, longitude bounds of −180° to 180° and Web Mercator latitude bounds of approximately ±85.05°, with `maxBoundsViscosity: 1`. Minimum zoom adapts to viewport width so a wide desktop cannot expose repeated worlds when zooming out. Panning and zooming remain available inside those boundaries. The GitHub repository and Pages base path remain `Threat-Intelligence-Map`.
