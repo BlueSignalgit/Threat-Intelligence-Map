@@ -26,6 +26,11 @@ jobs:
         env:
           VERIFY_BASEMAP: "1"
           PLAYWRIGHT_JSON_OUTPUT_FILE: basemap-evidence/results.json
+      - name: Check original tile and screenshot for API-key watermark
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr
+          python scripts/verify_basemap_images.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

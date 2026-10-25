@@ -60,3 +60,5 @@ Leaflet uses `noWrap: true` on tiles, `worldCopyJump: false`, longitude bounds o
 Blue Marble is static geographic context, not live satellite coverage or a street map. Its native tile zoom range is 0–8; Leaflet scales those tiles at higher zoom levels while keeping markers and English labels interactive. NASA and Natural Earth attribution remain visible. The former CARTO tile URL is removed, rather than obscuring any provider watermark.
 
 CI additionally runs `VERIFY_BASEMAP=1 npm run test:e2e` to verify live NASA imagery loads without credentials and retain the unmodified provider tile plus a map screenshot in the `basemap-verification` artifact. This external-service check is skipped locally unless explicitly enabled; the other browser tests remain independent of tile-service availability.
+
+CI uses Tesseract OCR to check the original provider JPEG and the rendered map for `API KEY REQUIRED`, retaining the extracted text alongside the images. The raw JPEG is checked before dashboard styling or geography overlays are applied.
