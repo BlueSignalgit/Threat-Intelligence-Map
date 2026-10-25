@@ -1,0 +1,36 @@
+name: Collect threat intelligence
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: intelligence-collection
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Collect real upstream records
+        id: feeds
+        continue-on-error: true
+        run: python scripts/collect.py --geolocate
+      - name: Save snapshot including source failures
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/data
+          if ! git diff --cached --quiet; then
+            git commit -m "data: refresh public threat intelligence"
+            git push
+          fi
+      - name: Report upstream failure
+        if: steps.feeds.outcome == 'failure'
+        run: |
+          echo 'One or more feeds failed. Last good records were retained; check snapshot source status.'
+          exit 1
