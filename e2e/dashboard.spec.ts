@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { mkdir, writeFile } from "node:fs/promises";
 test("real snapshot renders, navigation and search work, and mobile stays usable", async ({
   page,
 }) => {
@@ -184,6 +185,7 @@ test("public NASA basemap returns real imagery without an API key", async ({
     process.env.VERIFY_BASEMAP !== "1",
     "Live provider check runs in CI or with VERIFY_BASEMAP=1",
   );
+  test.setTimeout(60000);
   const oldProviderRequests: string[] = [];
   page.on("request", (request) => {
     if (request.url().includes("cartocdn.com"))
@@ -211,6 +213,11 @@ test("public NASA basemap returns real imagery without an API key", async ({
   expect(response.headers()["content-type"]).toContain("image/jpeg");
   const image = await response.body();
   expect(image.subarray(0, 3).toString("hex")).toBe("ffd8ff");
+  await mkdir("basemap-evidence", { recursive: true });
+  await writeFile("basemap-evidence/provider-tile.jpeg", image);
+  await page
+    .locator(".map")
+    .screenshot({ path: "basemap-evidence/rendered-map.png" });
   await testInfo.attach("unmodified-provider-tile", {
     body: image,
     contentType: "image/jpeg",

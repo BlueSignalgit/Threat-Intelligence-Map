@@ -8,3 +8,5 @@ __pycache__/
 *.tsbuildinfo
 playwright-report/
 test-results/
+
+basemap-evidence/
