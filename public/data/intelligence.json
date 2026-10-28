@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T18:51:55.058614+00:00",
+  "generatedAt": "2026-10-28T01:05:35.743322+00:00",
   "indicators": [
     {
       "ip": "50.16.16.211",
@@ -19,6 +19,30 @@
     }
   ],
   "vulnerabilities": [
+    {
+      "id": "CVE-2026-48356",
+      "vendor": "Adobe",
+      "product": "Commerce and Magento",
+      "title": "Adobe Commerce and Magento Unrestricted Upload of File with Dangerous Type Vulnerability",
+      "description": "Adobe Commerce and Magento contain an unrestricted upload of file with dangerous type vulnerability that could result in arbitrary code execution in the context of the current user, potentially gaining elevated access or control over the victim's account or session.",
+      "dateAdded": "2026-10-27",
+      "dueDate": "2026-11-10",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
+    {
+      "id": "CVE-2026-111497",
+      "vendor": "Google",
+      "product": "Brotli",
+      "title": "Google Brotli Unchecked Return Value Vulnerability",
+      "description": "Google Brotli contains an unchecked return value vulnerability that allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.",
+      "dateAdded": "2026-10-27",
+      "dueDate": "2026-11-10",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
     {
       "id": "CVE-2026-109618",
       "vendor": "PHP Group",
@@ -21119,15 +21143,15 @@
   "sources": {
     "feodo": {
       "status": "ok",
-      "lastSuccess": "2026-10-27T18:51:55.328484+00:00",
+      "lastSuccess": "2026-10-28T01:05:35.969080+00:00",
       "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.json",
       "count": 1
     },
     "cisa": {
       "status": "ok",
-      "lastSuccess": "2026-10-27T18:51:55.469365+00:00",
+      "lastSuccess": "2026-10-28T01:05:36.237348+00:00",
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
-      "count": 1758
+      "count": 1760
     }
   }
 }
