@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T18:56:22.917349+00:00",
+  "generatedAt": "2026-10-29T01:03:34.440582+00:00",
   "indicators": [
     {
       "ip": "50.16.16.211",
@@ -19,6 +19,30 @@
     }
   ],
   "vulnerabilities": [
+    {
+      "id": "CVE-2026-41709",
+      "vendor": "Broadcom",
+      "product": "VMware ESX",
+      "title": "Broadcom VMWare ESX Insufficient Logging Vulnerability",
+      "description": "Broadcom VMWare ESX contains an insufficient logging vulnerability that could allow a malicious actor with admin access to perform certain operations without being logged.",
+      "dateAdded": "2026-10-28",
+      "dueDate": "2026-11-11",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
+    {
+      "id": "CVE-2026-46300",
+      "vendor": "Linux",
+      "product": "Kernel",
+      "title": "Linux Kernel Missing Initialization of a Variable Vulnerability",
+      "description": "Linux Kernel contains a missing initialization of a variable vulnerability that could allow for unintended modification of page-cache-backed data via failure to preserve the shared-fragment marker during socket buffer coalescing, causing ESP input processing to decrypt shared fragments in place. This vulnerability can be chained with CVE-2026-109618 and CVE-2026-109619 to implant PHP webshells and run commands as root.",
+      "dateAdded": "2026-10-28",
+      "dueDate": "2026-10-31",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
     {
       "id": "CVE-2026-48356",
       "vendor": "Adobe",
@@ -21143,15 +21167,15 @@
   "sources": {
     "feodo": {
       "status": "ok",
-      "lastSuccess": "2026-10-28T18:56:23.147756+00:00",
+      "lastSuccess": "2026-10-29T01:03:34.913985+00:00",
       "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.json",
       "count": 1
     },
     "cisa": {
       "status": "ok",
-      "lastSuccess": "2026-10-28T18:56:23.769007+00:00",
+      "lastSuccess": "2026-10-29T01:03:35.270346+00:00",
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
-      "count": 1760
+      "count": 1762
     }
   }
 }
