@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T07:28:33.225279+00:00",
+  "generatedAt": "2026-11-12T13:21:55.092419+00:00",
   "indicators": [
     {
       "ip": "50.16.16.211",
@@ -21371,13 +21371,13 @@
   "sources": {
     "feodo": {
       "status": "ok",
-      "lastSuccess": "2026-11-12T07:28:33.416214+00:00",
+      "lastSuccess": "2026-11-12T13:21:55.423068+00:00",
       "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.json",
       "count": 1
     },
     "cisa": {
       "status": "ok",
-      "lastSuccess": "2026-11-12T07:28:33.544813+00:00",
+      "lastSuccess": "2026-11-12T13:21:55.742026+00:00",
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
       "count": 1779
     }
