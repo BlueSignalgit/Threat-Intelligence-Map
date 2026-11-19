@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T19:04:16.056702+00:00",
+  "generatedAt": "2026-11-19T01:22:08.596815+00:00",
   "indicators": [
     {
       "ip": "50.16.16.211",
@@ -19,6 +19,54 @@
     }
   ],
   "vulnerabilities": [
+    {
+      "id": "CVE-2024-10441",
+      "vendor": "Synology",
+      "product": "DiskStation Manager (DSM)",
+      "title": "Synology DiskStation Manager (DSM) Improper Encoding or Escaping of Output Vulnerability",
+      "description": "Synology DSM contains an improper encoding or escaping of output vulnerability in the system plugin daemon in Synology BeeStation OS (BSM) that could allow a remote attacker to execute arbitrary code via unspecified vectors.",
+      "dateAdded": "2026-11-18",
+      "dueDate": "2026-11-21",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
+    {
+      "id": "CVE-2026-40217",
+      "vendor": "BerriAI",
+      "product": "LiteLLM",
+      "title": "BerriAI LiteLLM Unprotected Alternate Channel Vulnerability",
+      "description": "BerriAI LiteLLM contains an unprotected alternate channel vulnerability that could allow remote attackers to execute arbitrary code via bytecode rewriting at the /guardrails/test_custom_code URI.",
+      "dateAdded": "2026-11-18",
+      "dueDate": "2026-12-02",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
+    {
+      "id": "CVE-2026-90817",
+      "vendor": "Vanderbilt University",
+      "product": "Research Electronic Data Capture (REDCap)",
+      "title": "Vanderbilt University Research Electronic Data Capture (REDCap) Code Injection Vulnerability",
+      "description": "Vanderbilt University Research Electronic Data Capture (REDCap) contains a code injection vulnerability which could allow an unauthenticated attacker to execute arbitrary code on the server. An attacker could exploit this via crafted HTTP requests that access an unintended controller route from a public survey context and supply a crafted file-path or stream parameter during data import processing. Exploitation requires knowledge of a valid public survey hash.",
+      "dateAdded": "2026-11-18",
+      "dueDate": "2026-11-21",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
+    {
+      "id": "CVE-2026-90436",
+      "vendor": "Apache",
+      "product": "Axis",
+      "title": "Apache Axis Unsafe Reflection Vulnerability",
+      "description": "Apache Axis contains an unsafe reflection vulnerability that could allow an unauthenticated remote attacker to execute arbitrary code via a crafted SOAP fault message that causes Axis to load and instantiate an attacker-specified class when a suitable class is available on the application classpath. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version.",
+      "dateAdded": "2026-11-18",
+      "dueDate": "2026-11-21",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
     {
       "id": "CVE-2026-115731",
       "vendor": "Perforce",
@@ -21407,15 +21455,15 @@
   "sources": {
     "feodo": {
       "status": "ok",
-      "lastSuccess": "2026-11-18T19:04:16.103648+00:00",
+      "lastSuccess": "2026-11-19T01:22:08.853336+00:00",
       "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.json",
       "count": 1
     },
     "cisa": {
       "status": "ok",
-      "lastSuccess": "2026-11-18T19:04:16.362357+00:00",
+      "lastSuccess": "2026-11-19T01:22:09.003036+00:00",
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
-      "count": 1782
+      "count": 1786
     }
   }
 }
