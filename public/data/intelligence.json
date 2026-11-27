@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T08:27:15.529340+00:00",
+  "generatedAt": "2026-11-27T21:14:26.392099+00:00",
   "indicators": [
     {
       "ip": "50.16.16.211",
@@ -19,6 +19,42 @@
     }
   ],
   "vulnerabilities": [
+    {
+      "id": "CVE-2026-120705",
+      "vendor": "OSGeo",
+      "product": "GeoServer",
+      "title": "OSGeo GeoServer XML Injection Vulnerability",
+      "description": "OsGeo GeoServer contains an XML injection vulnerability that allows an unauthenticated remote attacker to cause the server to read local text files accessible to the GeoServer process or fetch attacker-specified HTTP or HTTPS URLs via a crafted ID parameter in the WFS 2.0 GetFeatureById stored query. This vulnerability can be chained with CVE-2026-129244, CVE-2026-129243, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance.",
+      "dateAdded": "2026-11-27",
+      "dueDate": "2026-11-30",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
+    {
+      "id": "CVE-2026-129243",
+      "vendor": "OSGeo",
+      "product": "GeoServer",
+      "title": "OSGeo GeoServer Incorrect Authorization Vulnerability",
+      "description": "GeoServer contains an incorrect authorization vulnerability that allows an unauthenticated remote attacker to bypass service-level role checks and invoke operations protected solely by those checks via a request with a prefixed service parameter. This vulnerability can be chained with CVE-2026-129244, CVE-2026-120705, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance.",
+      "dateAdded": "2026-11-27",
+      "dueDate": "2026-11-30",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
+    {
+      "id": "CVE-2026-136716",
+      "vendor": "Drupal",
+      "product": "Core",
+      "title": "Drupal Core Improper Check for Unusual or Exceptional Conditions Vulnerability",
+      "description": "Drupal Core contains an improper check for unusual or exceptional conditions vulnerability that allows an unauthenticated remote attacker to take over a site via the exposed Drupal installer when the site is in one of the affected unusual or incomplete installation states.",
+      "dateAdded": "2026-11-27",
+      "dueDate": "2026-11-30",
+      "action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "ransomware": "Unknown",
+      "source": "CISA KEV"
+    },
     {
       "id": "CVE-2026-103406",
       "vendor": "Hewlett Packard Enterprise (HPE)",
@@ -21683,15 +21719,15 @@
   "sources": {
     "feodo": {
       "status": "ok",
-      "lastSuccess": "2026-11-27T08:27:15.647344+00:00",
+      "lastSuccess": "2026-11-27T21:14:26.816283+00:00",
       "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.json",
       "count": 1
     },
     "cisa": {
       "status": "ok",
-      "lastSuccess": "2026-11-27T08:27:15.727433+00:00",
+      "lastSuccess": "2026-11-27T21:14:27.308637+00:00",
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
-      "count": 1805
+      "count": 1808
     }
   }
 }
